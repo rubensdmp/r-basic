@@ -1,6 +1,6 @@
 #Esta línea no funciona, por ahora...
 #lm(y~x)
-
+#Esto es una prueba de GitHub hecha por mi veremos si servirá
 
 require(graphics)
 
