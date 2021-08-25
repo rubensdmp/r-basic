@@ -1,0 +1,15 @@
+opBasic = function(a,b){
+  print("suma")
+  print(a+b)
+  print("resta")
+  print(paste(sprintf("%i -%i = ",a,b),a-b)
+  print(b-a)
+  print("producto")
+  print(a*b)
+  print("cociente de la división entera")
+  print(a%/%b)
+  print(b%/%a)
+  print("resto de la división enteras")
+  print(a%%b)
+  print(b%%a)
+}

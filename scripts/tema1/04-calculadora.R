@@ -1,14 +1,26 @@
+# ante dudas ?[Nombre función]
+?round
+
+
 2*(3+5/2)
 
 2*((3+5)/2)
 
 2/3+5
 
+#cociente entero
 2%/%3+5
 
+#Mod (resto)
 2%%3
 
+#La potencia puede ser igual a Python
+2^5
+2**5
+
 2^3*5
+
+4^(1/2)
 
 2^-4
 
@@ -23,6 +35,8 @@
 # x = D %% d 
 725 - 103*7
 
+
+#Elementos y símbolos matemáticos
 pi
 
 2*pi
@@ -50,8 +64,10 @@ NaN
 c(2^30, 2^(-15), 1, 2, 3/2)
 
 
+#raíz cuadrada
 sqrt(25)
 
+#exponencial e
 exp(1)
 
 log(pi)
@@ -69,25 +85,53 @@ factorial(4)
 
 factorial(0)
 
+#Combinaciones / Coeficiente binomial
 choose(5, 3)
 
 choose(3,5)
 
+#log de a en b = c => b^c=a
+c=log(3, base=2)
+c
+2^c
+
+
 log(4^6, 4)
+
 
 6^log(4,6)
 
 choose(5,2)
 
+
+
+### TRIGONOMETRÍA ###
+#Repasar circunferencia goniométrica
+#
+#     /|
+#    / |
+#   /  | 
+#  /   | SEN
+# /    |
+# ------
+#   COS
+
+
+
+
 sin(60*pi/180)
+sin(rad(60))
 
 cos(60*pi/180)
 
 sinpi(1/2) # = sin (pi/2)
 
+# 0 e infinito por le punto flotante
 tan(pi) # -1.224647e-16 ~ 0
 
 tan(pi/2) # 1.633124e+16 ~ Inf
+
+
 
 asin(0.8660254) #arc sin en radianes
 
@@ -111,6 +155,9 @@ round(sqrt(2), 4)^2
 print(2^50, 15)
 print(2^50, 2)
 print(pi, 22)
+#Esto es porque R da solo hasta 16 cifras decimales
+#
+
 #3.141592653589793115998
 #3.141592653589793238462
 
@@ -128,9 +175,12 @@ ceiling(-3.45)
 trunc(-3.45)
 
 
+
+
 x = (pi^2)/2
 x
 
+#variables, forma rara de la "flecha" util poruqe va hacia el lado de la flecha
 y <- cos(pi/4)
 y
 
@@ -155,7 +205,7 @@ x = sqrt(x)
 ## Función f(x) = x^3 - (3^x)* sen(x)
 f = function(x) {
   x^3 - (3^x) * sin(x)
-}
+  }
 
 f(4) # 4^3 - 3^4 * sin(4)
 f(5)
@@ -188,6 +238,11 @@ suma5 <- function(numero){
 
 suma5(3)
 
+
+
+#Números complejos
+
+
 ls()
 
 rm(product)
@@ -211,6 +266,8 @@ class(3+2i)
 complex(real = pi, imaginary = sqrt(2)) -> z1
 z1
 
+
+#raiz cuadrada de un número complejo
 sqrt(-5)
 sqrt(as.complex(-5))
 

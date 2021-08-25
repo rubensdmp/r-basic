@@ -1,10 +1,6 @@
 ---
-title: "Mi primer Markdown"
-author: "Rubens Merlino"
-date: "11/12/2018"
-output:
-  html_document:
-    df_print: paged
+title: "HolaPDF"
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
