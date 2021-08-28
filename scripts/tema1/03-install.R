@@ -38,3 +38,6 @@ install.packages("tinytex", dep = TRUE)
 
 library(tinytex)
 
+install.packages("reticulate", dep = TRUE)
+
+library(reticulate)

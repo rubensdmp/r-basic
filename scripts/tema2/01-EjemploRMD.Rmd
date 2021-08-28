@@ -41,6 +41,12 @@ sqrt(x)
 ```
 
 
+```{python}
+print("toronja")
+```
+
+
+
 ```{r magic, message=TRUE, results='markup'}
 library(magic)
 magic(6)
