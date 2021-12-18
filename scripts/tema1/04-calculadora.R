@@ -242,7 +242,7 @@ suma5(3)
 
 #Números complejos
 
-
+#lista los elementos que hemos creado
 ls()
 
 rm(product)
