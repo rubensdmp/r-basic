@@ -29,7 +29,7 @@ En los vectores de `R`, todos sus objetos han de ser del mismo tipo: todos núme
 ## Básico
 
 - ```c()```: para definir un vector
-- ```scan()```: para definir un vector
+- ```scan()```: para definir un vector desde pantalla o desde url o nombre de fichero
 - ```fix(x)```: para modificar visualmente el vector $x$
 - ```rep(a,n)```: para definir un vector constante que contiene el dato $a$ repetido $n$ veces
 
@@ -154,6 +154,7 @@ rev(v)
 
 ## Subvectores
 
+-SE FILTRA CON CORCHETES []
 - ```vector[i]```: da la $i$-ésima entrada del vector
 
 	- Los índices en R empiezan en 1
@@ -196,10 +197,28 @@ v[v != 19 & v>15]
 - ```which.max(x)```: nos da la primera posición en la que el vector $x$ toma su valor máximo
 - ```which(x==max(x))```: da todas las posiciones en las que el vector $x$ toma sus valores máximos
 
+## COSAS de VECTORES
+- valores NA para remover en un vector 
+-sum(c, na.rm = TRUE)
+
+```{r}
+x = c(1:10)
+x[length(x)+5]= 78
+x
+v = x
+v[is.na(v)]=mean(v,na.rm = T)
+v
+cumsum(v[!is.na(v)])
+
+
+```
+
 
 # Factores
 
 ## Factor
+
+ES COMO PARA MOSTRAR LOS VALORES ÚNICOS
 
 <l class="definition">Factor</l>: es como un vector, pero con una estructura interna más rica que permite usarlo para clasificar observaciones
 

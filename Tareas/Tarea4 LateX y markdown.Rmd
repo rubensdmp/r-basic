@@ -1,0 +1,302 @@
+---
+title: "Tarea4 LateX y Marckdown"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Solución pregunta 1
+
+
+
+
+
+Antes de operar con las matrices debemos declararlas (crearlas) en $R$. Utilizando el comando:
+
+
+
+
+
+`matrix(vector, nrow=n, byrow=valor-logico)`
+
+
+
+* `Vector`: Corresponde a el vector que va a formar la matriz. (Se suele declarar más frecuentemente con un c(valor1,valor2,...))
+
+* `nrow=n`: Al numero de filas que va a tener la matriz, siendo $n$ el numero filas.
+
+* `byrow`: Para establecer si vamos a querer formar la matriz a través de filas ó columnas.
+
+    + Como la traducción al español bien dice _("por fila")_ si igualamos este valor a $TRUE$ 'byrow=TRUE` se formará la matriz por **filas** y no por **columnas**.
+
+    + Si igualamos `byrow=FALSE` significa que formaremos la matriz a través de columnas. Lo cual nos habilita (opcionalmente) a reemplazar el `nrow=n` por `ncol=n`.
+
+   
+
+
+
+Paso a declarar las matrices dadas en el ejercicio:
+
+
+
+```{r Declaracion matrices}
+
+
+
+A = matrix(c(1,2,3,4,4,3,2,1,0,1,0,2,3,0,4,0), nrow=4, byrow=TRUE) # Declaración primer matriz "A"
+
+A
+
+
+
+B = matrix(c(4,3,2,1,0,3,0,4,1,2,3,4,0,1,0,2), nrow=4, byrow=TRUE) # Declaración primer matriz "B"
+
+B
+
+```
+
+Procedo a realizar las operaciones solicitadas:
+
+
+
+$A \cdot B$
+
+
+
+**Explicación**:
+
+
+
+* La multiplicación de una matriz se realiza mediante el comando: `A %*% B` que es distinto a lo que intuitivamente  haríamos: `A * B`. Esta **última expresión / comando esta mal** porque en realidad **lo que hace es el escalar de la matriz** (elevar cada elemento al cuadrado) en vez de multiplicar cada elemento de la matriz (**A**) por el elemento de la misma posición de la otra matriz (**B**).
+
+
+
+
+
+**Resolución**:
+
+
+
+```{r Multiplicacion Matrices}
+
+A
+
+B
+
+A %*% B
+
+B %*% A
+
+```
+
+No es lo mismo hacer $A \cdot B$ que $B \cdot A$ porque la multiplicación de matrices se hace el producto de cada fila por la columna y se suman los resultados, y como cambia el orden de las entradas (no es lo mismo la fila de A que la de B), es distinto el resultado.
+
+
+
+Paso a realizar la **_transpuesta_** de $(A \cdot B)$, que es pasar las columnas a filas. S realiza con el comando `t(A%*%B)`.
+
+
+
+```{r Transpuesta de A * B}
+
+t(A%*%B)
+
+```
+
+Ahora paso a realizar la $B^t \cdot A$. Prestar atención, no es lo mismo que hacer $B \cdot A$ porque ahora $B$ tiene cambiadas las columnas por las filas. Para esto, debemos capturar solamente a B entre los parentesis de la funcion `t()`
+
+
+
+```{r (Transpuesta de B) * A}
+
+t(B) %*% A
+
+```
+
+
+
+Realizaremos ahora la inverse de multiplicar $A$ por $B$ $(A \cdot B)^-1$. Para dar con la inversa de una matriz se utiliza el comando `solve()`
+
+
+
+```{r Inversa de B por A}
+
+solve(A%*%B)
+
+```
+
+Podemos ver que en esta matriz hay valores $Inf$, que significa "Inifito". Esto es debido a que el numero resultante es tan grande que $R$ lo toma como casi infinito.
+
+
+
+Finalmente, realizaré la inversa de A multiplicado por la transpuesta de B $A^-1 \cdot B^t$ aplicando todo lo visto anteriormente.
+
+
+
+```{r Inversa de A por la transpuesta de B}
+
+solve(A) %*% t(B)
+
+```
+
+Acá de nuevo podemos ver que aparece el valor $Inf$ y otro más el $NaN$ (_Not a Number_) que significa "_No es un número_" que aparece cuando no hay numero que represente el resultado de la operación. Por ej, el resultado de $0/0$, $R$ en vez de mostrar esta operación como "_Erorr_" devuelve el $NaN$.
+
+
+
+Por último, realizaré la operación de $A \cdot B$ en \LaTeX mostrando el resultado:
+
+
+
+$$A=\begin{pmatrix}1 & 2 & 3 & 4\\ 4 & 3 & 2 & 1\\ 0 & 1 & 0 & 2 \\ 3 & 0 & 4 & 0\end{pmatrix} \times  B=\begin{pmatrix}4 & 3 & 2 & 1\\ 0 & 3 & 0 & 4\\ 1 & 2 & 3 & 4 \\ 0 & 1 & 0 & 2\end{pmatrix}  = AB\begin{pmatrix} 7 & 19 & 11 & 29 \\ 18 & 26 & 14 & 26 \\ 0 & 5 & 0 & 8 \\ 16 & 17 & 18 & 19\end{pmatrix}$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Solución 2
+
+
+
+Mi **DNI** es 32541069 por lo que crearé dicho vector con estos digitos, para eso voy a utlizar el comando `c(digito1, digito2,...)`
+
+
+
+```{r Vector DNI}
+
+dni = c(3,2,5,4,1,0,6,9) # Definicion vector DNI.
+
+dni^2 # Cuadrado del vector.
+
+sqrt(dni) # Raíz cuadrada del vector.
+
+cumsum(dni) # Suma de todos las cifras del vector.
+
+```
+
+
+
+**Vectores resultantes** de las operaciones con el vector DNI, \LaTeX:
+
+
+
+$$dni = (3,2,5,4,1,0,6,9)$$
+
+
+
+$$(dni)^2 = (9,4,25,16,1,0,36,81)$$
+
+
+
+$$\sqrt{dni} = (1.732051,1.414214,2.236068,2.000000,1.000000,0.000000,2.449490,3.000000)$$
+
+
+
+$$\sum{dni} = (3,5,10,14,15,15,21,30)$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Solución 3
+
+
+
+Mi nombre es _"Emanuel"_ y mis apellidos son _"Rodriguez Bedeman"_, por lo que utilizando el comando `c(digito1,digito2,...)` paso a realizar el vector de mi nombre y apellido.
+
+
+
+```{r Vector nombre}
+
+name = c("E","M","A","N","U","E","L","R","O","D","R","I","G","U","E","Z","B","E","D","E","M","A","N") #Declaración del vector name
+
+
+
+name[1:7] # Subvector con solamente mi nombre.
+
+name[8:length(name)] # Subvector con solamente mi apellido.
+
+sort(name) # Vector ordenado alfabéticamente
+
+matrix(name, nrow=4, byrow=TRUE) # Creación de la matriz con el vector "name"
+
+```
+
+
+
+Paso a realizar las operaciones en \LaTeX
+
+$$name = (E,M,A,N,U,E,L,R,O,D,R,I,G,U,E,Z,B,E,D,E,M,A,N)$$
+
+$$Subvector Nombre = (E,M,A,N,U,E,L) $$
+
+
+
+$$Subvector Appelido = (R,O,D,R,I,G,U,E,Z,B,E,D,E,M,A,N) $$
+
+
+
+$$Vector Ordenado = (A,A,B,D,D,E,E,E,E,E,G,I,L,M,M,N,N,O,R,R,U,U,Z)$$
+
+
+
+$$name = \begin{pmatrix} "E" & "M" & "A" & "N" & "U" & "E" \\ "L" & "R" & "O" & "D" & "R" & "I" \\ "G" & "U" & "E" & "Z" & "B" & "E" \\ "D" & "E" & "M" & "A" & "N" & "E"\end{pmatrix}$$
